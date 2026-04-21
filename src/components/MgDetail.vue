@@ -3,12 +3,12 @@ import axios from 'axios';
 import { onBeforeMount, ref } from 'vue';
 
 
-const board = ref('');
+  const board = ref({});
 
 onBeforeMount(async () => {
   try {
     const res = await axios.get('/data/board.json');
-    board.value = res.data;
+    board.value = res.data;    
   } catch(error) {
     console.error(error);
   }
