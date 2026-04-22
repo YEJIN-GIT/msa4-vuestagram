@@ -3,7 +3,7 @@ import axios from 'axios';
 import { onBeforeMount, ref } from 'vue';
 
 
-  const board = ref({});
+  const board = ref(null);
 
 onBeforeMount(async () => {
   try {
@@ -16,8 +16,12 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="container">
-    <div class="img" style="background-image: url('/dev/osoi.jpg');"></div>
+  <!--
+    `v-if="board"` 사용 이유: 데이터가 없는 상태에서 렌더링시, 에러 발생 가능성이 있어서
+    데이터가 있을 때만 렌더링하도록 유도하기위해 사용
+   -->
+  <div class="container" v-if="board"> <!-- board가 null인 경우 false -->
+    <div class="img" :style="{backgroundImage: `url('${board.img}')`}"></div>
     <span class="auther">작성자: {{board.writer}}</span>
     <span class="content">{{board.content}}</span>
   </div>
