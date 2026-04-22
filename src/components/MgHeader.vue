@@ -1,9 +1,14 @@
 <script setup>
+import { useCounterStore } from '../stores/useCounterStore.js';
+
+
+
+const  counterStore = useCounterStore();
 </script>
 
 <template>
   <div class="header">
-    <h1>Meerketgram</h1>
+    <h1>Meerketgram {{counterStore.cnt}}</h1>
     <div class="hearder-btn-box">
       <button type="button" class="btn btn-small btn-gray">Sing In</button>
       <button type="button" class="btn btn-small btn-white">Sing Up</button>
